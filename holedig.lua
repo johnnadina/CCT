@@ -1,27 +1,32 @@
-for i = 8,1,-1 
+for i = arg[1]/2,1,-1 
 do 
-    for i = 4,1,-1 
+    for j = arg[3]/2,1,-1 
     do 
-        for i = 15,1,-1 
+        for k = arg[2],1,-1 
         do 
+			turtle.digDown()
             turtle.down()	
-            turtle.digDown()
         end
-		turtle.forward()
+		
 		turtle.dig()
-        for i = 15,1,-1 
+		turtle.forward()
+		
+        for k = arg[2],1,-1 
         do 
+			turtle.digUp()
             turtle.up()
-            turtle.digUp()	
         end
+		
+		if ( j%2 == 0 ) then
+			turtle.turnLeft()
+			turtle.dig()
+			turtle.forward()
+			turtle.turnLeft()
+		else
+			turtle.turnRight()
+			turtle.dig()
+			turtle.forward()
+			turtle.turnRight()
+		end
     end
-		turtle.turnRight()
-		turtle.forward()
-		turtle.turnRight()
-		turtle.forward()
-		turtle.forward()
-		turtle.forward()
-		turtle.forward()
-		turtle.turnLeft()
-		turtle.turnLeft()
 end
