@@ -16,7 +16,8 @@ do
 			turtle.digUp()
             turtle.up()
         end
-		
+		turtle.dig()
+		turtle.forward()
     end
 	if ( i%2 == 0 ) then
 			turtle.turnLeft()
