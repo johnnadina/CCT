@@ -17,7 +17,8 @@ do
             turtle.up()
         end
 		
-		if ( j%2 == 0 ) then
+    end
+	if ( j%2 == 0 ) then
 			turtle.turnLeft()
 			turtle.dig()
 			turtle.forward()
@@ -28,5 +29,4 @@ do
 			turtle.forward()
 			turtle.turnRight()
 		end
-    end
 end
