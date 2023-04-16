@@ -1,6 +1,6 @@
-for i = arg[1]/2,1,-1 
+for i = (arg[1]/2),1,-1 
 do 
-    for j = arg[3]/2,1,-1 
+    for j = (arg[3]/2),1,-1 
     do 
         for k = arg[2],1,-1 
         do 
@@ -18,7 +18,7 @@ do
         end
 		
     end
-	if ( j%2 == 0 ) then
+	if ( i%2 == 0 ) then
 			turtle.turnLeft()
 			turtle.dig()
 			turtle.forward()
@@ -28,5 +28,5 @@ do
 			turtle.dig()
 			turtle.forward()
 			turtle.turnRight()
-		end
+	end
 end
