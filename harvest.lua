@@ -105,13 +105,17 @@ function deposit()
         turtle.drop()
     end
     print("Ended run with fuel percent of ".. 100*turtle.getFuelLevel()/turtle.getFuelLimit())
-    if turtle.getFuelLevel() < (turtle.getFuelLimit()/2) then
-        while turtle.getFuelLevel() < (turtle.getFuelLimit()/2) do
-            turtle.select(16)
+    if turtle.getFuelLevel() < (turtle.getFuelLimit()*0.9) then
+        turtle.select(16)
+        while turtle.getFuelLevel() < (turtle.getFuelLimit()) do
             turtle.suckDown(10)
-            turtle.refuel(10)
+            if turtle.refuel(10)
+                print("Refuelled to ".. 100*turtle.getFuelLevel()/turtle.getFuelLimit())
+            else
+                print("No more fuel!")
+                break
+            end
         end
-        print("Refuelled to ".. 100*turtle.getFuelLevel()/turtle.getFuelLimit())
     end
     turtle.turnLeft()
     turtle.turnLeft()
