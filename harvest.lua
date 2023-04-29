@@ -4,11 +4,7 @@ cropList = {"minecraft:wheat","minecraft:beetroots","minecraft:carrots","minecra
 
 --- forward first, to the side second
 startDirection = "right"
-if startDirection == "right" then
-    rowParity = true
-else
-    rowParity = false
-end
+rowParity=true
 
 local function isIn (tab, val)
     for index, value in ipairs(tab) do
@@ -70,6 +66,11 @@ function harvest()
 end
 
 function sortie()
+    if startDirection == "right" then
+        rowParity = true
+    else
+        rowParity = false
+    end
     turtle.forward()
     for i=1, fieldSize[2] do
         harvest()
@@ -109,7 +110,7 @@ function deposit()
         turtle.select(16)
         while turtle.getFuelLevel() < (turtle.getFuelLimit()) do
             turtle.suckDown(10)
-            if turtle.refuel(10)
+            if turtle.refuel(10) then
                 print("Refuelled to ".. 100*turtle.getFuelLevel()/turtle.getFuelLimit())
             else
                 print("No more fuel!")
@@ -125,7 +126,7 @@ if blockCheck({"minecraft:barrel"}) then
     while true do
         sortie()
         deposit()
-        sleep(1200)
+        sleep(600)
     end
 else
     print("ERROR: Where fuck am I??")
