@@ -28,6 +28,27 @@ function cut()
         turtle.down()
         turtle.dig()
     end
+    turtle.back()
+    for i=1,16 do
+        turtle.select(1)
+        turtle.dropDown()
+    end
+    turtle.turnRight()
+    turtle.forward()
+    turtle.turnLeft()
+    turtle.select(1)
+    turtle.suck(4)
+    turtle.forward()
+    turtle.turnLeft()
+    turtle.place()
+    turtle.turnRight()
+    turtle.forward()
+    turtle.turnLeft()
+    turtle.place()
+    turtle.turnRight()
+    turtle.back()
+    turtle.place()
+    turtle.back()
 end
 cut()
 
