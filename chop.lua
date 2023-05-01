@@ -18,8 +18,7 @@ function cut()
         turtle.up()
         height = height+1
     end
-    turtle.select(1)
-    turtle.refuel()
+    refuelFull()
     turtle.turnLeft()
     turtle.forward()
     turtle.turnRight()
@@ -51,5 +50,38 @@ function cut()
     turtle.back()
     turtle.place()
 end
-cut()
 
+function refuelFull()
+    if turtle.getFuelLevel() < (turtle.getFuelLimit()*0.9) then
+        turtle.select(1)
+        while turtle.getFuelLevel() < (turtle.getFuelLimit()) do
+            turtle.suckDown(10)
+            if turtle.refuel(10) then
+                print("Refuelled to ".. 100*turtle.getFuelLevel()/turtle.getFuelLimit())
+            else
+                print("No more fuel!")
+                break
+            end
+        end
+    end
+end
+
+function blockCheck(blockList)
+    local _,block = turtle.inspectDown()
+    if blockList == block["name"]) then
+        return true
+    else
+        return false
+    end
+end
+
+if blockCheck("minecraft:barrel") then
+    while true do
+        local _,block = turtle.inspect()
+        if block["name"] == "minecraft:spruce_log" then
+            cut()
+        sleep(30)
+    end
+else
+    print("ERROR: Where fuck am I??")
+end
