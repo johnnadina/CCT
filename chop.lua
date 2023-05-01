@@ -68,7 +68,7 @@ end
 
 function blockCheck(blockList)
     local _,block = turtle.inspectDown()
-    if blockList == block["name"]) then
+    if blockList == block["name"] then
         return true
     else
         return false
