@@ -4,7 +4,7 @@ inbox = {
 }
 outbox = {}
 storage = {
-    peripheral.wrap("quark:variant_chest_1") = {"spruce_log","birch_log"}
+    [peripheral.wrap("quark:variant_chest_1")] = {"spruce_log","birch_log"}
 }
 trash = peripheral.wrap("minecraft:chest_")
 -- make a function here that loads all the switchboard values into the storage box, basically
