@@ -45,11 +45,11 @@ function transLog(name,number)
             table.remove(transLogNumbers,1)
         end
     end
+    monitor.clear()
+    monitor.setCursorPos(1,1)
     for i,v in pairs(transferLog) do
-        monitor.clear()
-        monitor.setCursorPos(5,5)
         monitor.write(v.." x"..transLogNumbers[i])
-        monitor.setCursorPos(monitor.getCursorPos()[1], monitor.getCursorPos()[2]-5)
+        monitor.setCursorPos(1,i)
     end
 end
 
