@@ -27,6 +27,7 @@ end
 transferLog = {}
 transLogNumbers = {}
 monitor = peripheral.wrap("top")
+monitor.write("yeehaw")
 function transLog(name,number)
     if isIn(transferLog,name) then
         for i,v in pairs(transferLog) do
