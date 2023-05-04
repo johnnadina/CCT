@@ -1,6 +1,6 @@
 
 inbox = {
-    peripheral.wrap("quark:crate_2")
+    peripheral.wrap("quark:crate_2"),
     peripheral.wrap("quark:variant_chest_9")
 }
 outbox = {}
