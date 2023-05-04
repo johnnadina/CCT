@@ -27,7 +27,6 @@ end
 transferLog = {}
 transLogNumbers = {}
 monitor = peripheral.wrap("top")
-monitor.write("yeehaw")
 function transLog(name,number)
     if isIn(transferLog,name) then
         for i,v in pairs(transferLog) do
@@ -41,8 +40,10 @@ function transLog(name,number)
     else
         transferLog[#transferLog+1] = name
         transLogNumbers[#transLogNumbers+1] = number
-        table.remove(transferLog,1)
-        table.remove(transLogNumbers,1)
+        if #transferLog > 10 then
+            table.remove(transferLog,1)
+            table.remove(transLogNumbers,1)
+        end
     end
     for i,v in pairs(transferLog) do
         monitor.clear()
