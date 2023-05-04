@@ -24,6 +24,34 @@ local function isIn (tab, val)
 end 
 --why the hell is this one not a default lua function?
 
+transferLog = {}
+transLogNumbers = {}
+monitor = peripheral.wrap("top")
+function transLog(name,number)
+    if isIn(transferLog,name) then
+        for i,v in pairs(transferLog) do
+            if v == name then
+                transferLog[#transferLog+1] = name
+                transLogNumbers[#transLogNumbers+1] = transLogNumbers[i]+number
+                table.remove(transferLog,i)
+                table.remove(transLogNumbers,i)
+            end
+        end
+    else
+        transferLog[#transferLog+1] = name
+        transLogNumbers[#transLogNumbers+1] = number
+        table.remove(transferLog,1)
+        table.remove(transLogNumbers,1)
+    end
+    for i,v in pairs(transferLog) do
+        monitor.clear()
+        monitor.setCursorPos(5,5)
+        monitor.write(v.." x"..transLogNumbers[i])
+        monitor.setCursorPos(monitor.getCursorPos()[1], monitor.getCursorPos()[2]-5)
+
+end
+
+
 function rmpfx(name)
     return string.match(name,":(.*)")
 end
@@ -34,6 +62,7 @@ while true do
         for slot, item in pairs(inv.list()) do
             for chest, pattern in pairs(storage) do
                 if isIn(pattern, rmpfx(item.name)) then
+                    transLog(item.name,item.count)
                     if inv.pushItems(chest,slot) < 0 then
                         inv.pushItems(trash.getName,slot)
                     end
