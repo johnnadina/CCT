@@ -27,12 +27,15 @@ function cut()
         turtle.down()
         turtle.dig()
     end
-    turtle.back()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.dig()
+    turtle.forward()
     for i=1,16 do
         turtle.select(1)
         turtle.dropDown()
     end
-    turtle.turnRight()
+    turtle.turnLeft()
     turtle.forward()
     turtle.turnLeft()
     turtle.select(1)
@@ -81,7 +84,7 @@ if blockCheck("minecraft:barrel") then
         if block["name"] == "minecraft:spruce_log" then
             cut()
         end
-        sleep(30)
+        sleep(1)
     end
 else
     print("ERROR: Where fuck am I??")
