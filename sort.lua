@@ -5,8 +5,8 @@ inbox = {
 }
 outbox = {}
 storage = {
-    ["quark:variant_chest_1"] = {"spruce_log","birch_log","oak_log",""}
-    ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken"}
+    ["quark:variant_chest_1"] = {"spruce_log","birch_log","oak_log",""},
+    ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken"},
     ["quark:variant_chest_12"] = {"bamboo","sugar_cane","glow_berries","cooked_chicken"}
 
 }
