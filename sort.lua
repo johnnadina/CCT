@@ -1,12 +1,12 @@
 
 inbox = {
-    peripheral.wrap("quark:crate_0")
+    peripheral.wrap("minecraft:barrel_3")
 }
 outbox = {}
 storage = {
     ["quark:variant_chest_1"] = {"spruce_log","birch_log"}
 }
-trash = peripheral.wrap("minecraft:chest_")
+--trash = peripheral.wrap("minecraft:chest_")
 -- make a function here that loads all the switchboard values into the storage box, basically
 
 
@@ -29,14 +29,17 @@ end
 
 
 
-for i, inv in ipairs(inbox) do
+for i, inv in pairs(inbox) do
     for slot, item in pairs(inv.list()) do
+        print(item.name)
         for chest, pattern in pairs(storage) do
+            for i,v in pairs(pattern) do
+                print(v)
+            end
             if isIn(pattern, rmpfx(item.name)) then
                 inv.pushItems(chest,slot)
-                -- if inv.pushItems(chest,slot) < 1 then
-                --     inv.pushItems(trash.getName,slot)
-                -- end
+                print("pushing!")
+                print(chest)
             end
         end
     end
