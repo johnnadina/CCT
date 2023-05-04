@@ -80,6 +80,7 @@ if blockCheck("minecraft:barrel") then
         local _,block = turtle.inspect()
         if block["name"] == "minecraft:spruce_log" then
             cut()
+        end
         sleep(30)
     end
 else
