@@ -7,7 +7,7 @@ outbox = {}
 storage = {
     ["quark:variant_chest_1"] = {"spruce_log","birch_log","oak_log",""},
     ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken"},
-    ["quark:variant_chest_12"] = {"bamboo","sugar_cane","glow_berries","cooked_chicken"}
+    ["quark:variant_chest_12"] = {"bamboo","sugar_cane"}
 
 }
 trash = peripheral.wrap("quark:variant_chest_10")
@@ -29,13 +29,14 @@ function rmpfx(name)
 end
 
 
-
-for i, inv in pairs(inbox) do
-    for slot, item in pairs(inv.list()) do
-        for chest, pattern in pairs(storage) do
-            if isIn(pattern, rmpfx(item.name)) then
-                if inv.pushItems(chest,slot) < 0 then
-                    inv.pushItems(trash.getName,slot)
+while true do
+    for i, inv in pairs(inbox) do
+        for slot, item in pairs(inv.list()) do
+            for chest, pattern in pairs(storage) do
+                if isIn(pattern, rmpfx(item.name)) then
+                    if inv.pushItems(chest,slot) < 0 then
+                        inv.pushItems(trash.getName,slot)
+                    end
                 end
             end
         end
