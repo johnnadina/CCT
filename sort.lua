@@ -4,7 +4,7 @@ inbox = {
 }
 outbox = {}
 storage = {
-    [peripheral.wrap("quark:variant_chest_1")] = {"spruce_log","birch_log"}
+    "quark:variant_chest_1" = {"spruce_log","birch_log"}
 }
 trash = peripheral.wrap("minecraft:chest_")
 -- make a function here that loads all the switchboard values into the storage box, basically
@@ -33,7 +33,7 @@ for i, inv in ipairs(inbox) do
     for slot, item in pairs(inv.list()) do
         for chest, pattern in pairs(storage) do
             if isIn(pattern, rmpfx(item.name)) then
-                if inv.pushItems(chest.getName,slot) < 1 then
+                if inv.pushItems(chest,slot) < 1 then
                     inv.pushItems(trash.getName,slot)
                 end
             end
