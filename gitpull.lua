@@ -5,6 +5,8 @@ download = http.get(command) --This will make 'download' hold the contents of th
 handle = download.readAll() --Reads everything in download
 download.close() --remember to close download!
 
-file = fs.open("homebase_alpha/" .. program,"w") --opens the file 'startup' with the permissions to write.
-file.write(handle) --writes all the stuff in handle to the file 'startup'.
+rm program --delete the program already in the computer
+file = fs.open( program,"w") --opens the file with the permissions to write.
+file.write(handle) --writes all the stuff in handle to the file.
 file.close() --remember to close download!
+print("Done")
