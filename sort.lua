@@ -48,7 +48,7 @@ function transLog(name,number)
         monitor.setCursorPos(5,5)
         monitor.write(v.." x"..transLogNumbers[i])
         monitor.setCursorPos(monitor.getCursorPos()[1], monitor.getCursorPos()[2]-5)
-
+    end
 end
 
 
