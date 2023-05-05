@@ -5,7 +5,19 @@ inbox = {
 }
 outbox = {}
 storage = {
+    ["quark:variant_chest_0"] = {"stone","cobblestone","diorite","andesite","granite","deepslate","shale","sturdy_stone"},
     ["quark:variant_chest_1"] = {"spruce_log","birch_log","oak_log",""},
+    ["quark:variant_chest_5"] = {
+        "diamond","diamond_block",
+        "iron_ingot","iron block","iron_nugget",
+        "gold_ingot","gold_block","gold_nugget",
+        "emerald","emerald_block",
+        "redstone","redstone_block",
+        "copper_ingot","copper_block",
+        "lapis_lazuli","lapis_block",
+        "quartz",
+        "flint"},
+    ["quark:variant_chest_8"] = {"dirt","grass_block","gravel"},
     ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken"},
     ["quark:variant_chest_12"] = {"bamboo","sugar_cane"}
 
