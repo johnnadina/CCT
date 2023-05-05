@@ -28,7 +28,7 @@ function rmpfx(name)
     return string.match(name,":(.*)")
 end
 
-function displayName(id)
+function displayName(name)
     local dingus = string.match(name,":(.*)")
     local dingus2 = string.gsub(dingus,"_"," ")
     return (dingus2:gsub("^%l", string.upper))
@@ -57,8 +57,8 @@ function transLog(name,number)
     monitor.clear()
     monitor.setCursorPos(1,1)
     for i,v in pairs(transferLog) do
-        monitor.write(displayName(v).." x"..transLogNumbers[i])
         monitor.setCursorPos(1,i)
+        monitor.write(displayName(v).." x"..transLogNumbers[i])
     end
 end
 
