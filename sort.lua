@@ -10,7 +10,7 @@ storage = {
     ["quark:variant_chest_3"] = {"bone_meal","gunpowder","arrow","leather","ink_sac","spider_eye","phantom_membrane","bone_block","string","ghast_tear"},
     ["quark:variant_chest_5"] = {
         "diamond","diamond_block",
-        "iron_ingot","iron block","iron_nugget",
+        "iron_ingot","iron_block","iron_nugget",
         "gold_ingot","gold_block","gold_nugget",
         "emerald","emerald_block",
         "redstone","redstone_block",
@@ -21,6 +21,7 @@ storage = {
     ["quark:variant_chest_8"] = {"dirt","grass_block","gravel"},
     ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken"},
     ["quark:variant_chest_12"] = {"bamboo","sugar_cane"},
+    ["quark:variant_chest_14"] = {"glowstone","glowstone_dust","netherrack","soul_sand","soul_soil","crimson_nylium","warped_nylium","nether_wart_blocks"},
     ["quark:variant_chest_17"] = {"glass","glass_pane","pipe","encased_pipe"}
 
 }
@@ -46,7 +47,7 @@ function displayName(name)
     local dingus = string.match(name,":(.*)")
     local dingus2 = string.gsub(dingus,"_"," ")
     return (dingus2:gsub("^%l", string.upper))
-
+end
 transferLog = {}
 transLogNumbers = {}
 monitor = peripheral.wrap("top")
