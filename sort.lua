@@ -87,7 +87,7 @@ while true do
             for chest, pattern in pairs(storage) do
                 if isIn(pattern, rmpfx(item.name)) then
                     if inv.pushItems(chest,slot) == 0 then
-                        inv.pushItems(trash.getName,slot)
+                        inv.pushItems(peripheral.getName(trash),slot)
                     else
                         transLog(item.name,item.count)
                     end
