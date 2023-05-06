@@ -19,10 +19,12 @@ storage = {
         "quartz",
         "flint"},
     ["quark:variant_chest_8"] = {"dirt","grass_block","gravel"},
-    ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken"},
+    ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken","melon_slice","potato"},
     ["quark:variant_chest_12"] = {"bamboo","sugar_cane"},
     ["quark:variant_chest_14"] = {"glowstone","glowstone_dust","netherrack","soul_sand","soul_soil","crimson_nylium","warped_nylium","nether_wart_blocks"},
     ["quark:variant_chest_17"] = {"glass","glass_pane","pipe","encased_pipe"}
+
+    ["quark:variant_chest_10"] = {"feather","wheat_seeds","beetroot_seeds","poisonous_potato"}
 
 }
 trash = peripheral.wrap("quark:variant_chest_10")
@@ -84,9 +86,10 @@ while true do
         for slot, item in pairs(inv.list()) do
             for chest, pattern in pairs(storage) do
                 if isIn(pattern, rmpfx(item.name)) then
-                    transLog(item.name,item.count)
-                    if inv.pushItems(chest,slot) < 0 then
+                    if inv.pushItems(chest,slot) == 0 then
                         inv.pushItems(trash.getName,slot)
+                    else
+                        transLog(item.name,item.count)
                     end
                 end
             end
