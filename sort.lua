@@ -19,10 +19,10 @@ storage = {
         "quartz",
         "flint"},
     ["quark:variant_chest_8"] = {"dirt","grass_block","gravel"},
-    ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken","melon_slice","potato"},
+    ["quark:variant_chest_11"] = {"carrot","beetroot","glow_berries","cooked_chicken","melon_slice","potato","wheat"},
     ["quark:variant_chest_12"] = {"bamboo","sugar_cane"},
     ["quark:variant_chest_14"] = {"glowstone","glowstone_dust","netherrack","soul_sand","soul_soil","crimson_nylium","warped_nylium","nether_wart_blocks"},
-    ["quark:variant_chest_17"] = {"glass","glass_pane","pipe","encased_pipe"}
+    ["quark:variant_chest_17"] = {"glass","glass_pane","pipe","encased_pipe"},
 
     ["quark:variant_chest_10"] = {"feather","wheat_seeds","beetroot_seeds","poisonous_potato"}
 
