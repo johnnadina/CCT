@@ -28,9 +28,8 @@ storage = {
 
 }
 trash = peripheral.wrap("quark:variant_chest_10")
--- make a function here that loads all the switchboard values into the storage box, basically
 
-
+-- function that checks if a value exists in a table. why this isnt a default function perplexes me
 local function isIn (tab, val)
     for index, value in ipairs(tab) do
         if value == val then
@@ -39,20 +38,26 @@ local function isIn (tab, val)
     end
     return false
 end 
---why the hell is this one not a default lua function?
 
+
+-- removes the prefix on item names (for example, takes "minecraft:item" and returns "item")
 function rmpfx(name)
     return string.match(name,":(.*)")
 end
 
+-- converts the item names in readable ones (for example, takes "minecraft:useful_item" and returns "Useful Item")
 function displayName(name)
     local dingus = string.match(name,":(.*)")
     local dingus2 = string.gsub(dingus,"_"," ")
     return (dingus2:gsub("^%l", string.upper))
 end
+
+--variables for the transfer log
 transferLog = {}
 transLogNumbers = {}
 monitor = peripheral.wrap("top")
+
+-- this function basically collects and prints the items transfered. It doesn't do any sorting, at all, all it does is take the name of the item processed and the amount, and uses that info to update the display/counter thing
 function transLog(name,number)
     if isIn(transferLog,name) then
         for i,v in pairs(transferLog) do
@@ -80,7 +85,7 @@ function transLog(name,number)
 end
 
 
-
+-- this is the actual sorting. as you can see its very rudimentary
 while true do
     for i, inv in pairs(inbox) do
         for slot, item in pairs(inv.list()) do
