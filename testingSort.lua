@@ -56,16 +56,14 @@ end
 
 -- Open the file in read mode ("r" mode)
 local file, err = io.open(database_path, "r")
-
--- Check if there was an error opening the file
 if not file then
     print("Error opening the file:", err)
 else
-    -- Read the content from the file and store it in a new variable
-    local content_read = file:read("*a")
+    -- Read the content from the file
+    local storage_retrieved = file:read("*a")
     file:close()
+    local storage = json.decode(storage_retrieved)
 end
-
 
 -- function that checks if a value exists in a table. why this isnt a default function perplexes me
 local function isIn (tab, val)
