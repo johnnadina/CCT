@@ -47,21 +47,21 @@ local storage_jason = json.encode(storage_table)
 if not database then
     print("Error opening the file:", err)
 else -- If not, write to the json file
-    file:write(storage_jason)
-    file:close()
-    file = nil
+    database:write(storage_jason)
+    database:close()
+    database = nil
 end
 
 --Extract from json file:
 
 -- Open the file in read mode ("r" mode)
-local file, err = io.open(database_path, "r")
-if not file then
+local database, err = io.open(database_path, "r")
+if not database then
     print("Error opening the file:", err)
 else
     -- Read the content from the file
-    local storage_retrieved = file:read("*a")
-    file:close()
+    local storage_retrieved = database:read("*a")
+    database:close()
     local storage = json.decode(storage_retrieved)
 end
 
