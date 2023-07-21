@@ -47,9 +47,12 @@ local storage_jason = json.encode(storage_table)
 if not database then
     print("Error opening the file:", err)
 else -- If not, write to the json file
+    print("Writing database")
     database:write(storage_jason)
     database:close()
     database = nil
+    print("Database wrote!")
+
 end
 
 --Extract from json file:
@@ -60,9 +63,12 @@ if not database then
     print("Error opening the file:", err)
 else
     -- Read the content from the file
+    print("Reading database")
     local storage_retrieved = database:read("*a")
     database:close()
     local storage = json.decode(storage_retrieved)
+    print("Database read!")
+
 end
 
 -- function that checks if a value exists in a table. why this isnt a default function perplexes me
