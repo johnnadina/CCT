@@ -1,3 +1,4 @@
+--why the hell is this one not a default lua function?
 local function isIn (tab, val)
     for index, value in ipairs(tab) do
         if value == val then
@@ -6,33 +7,63 @@ local function isIn (tab, val)
     end
     return false
 end 
---why the hell is this one not a default lua function?
-
--- This will be the hardcoded list of input chests
-inputChest = {"minecraft:barrel_0"}
 
 
--- Scans all connected inventories, and returns a list
--- Every entry in the list consists of 
---    a "name" index, holding the name of the inv as a string
---    and a "items" index, holding a list of all item names in that inventory
-function scan()
-    local chestlist = {}
-    for i,v in ipairs(peripheral.getNames()) do
-        if select(2,peripheral.getType(v)) == 'inventory' then
-            local chest = peripheral.wrap(v)
-            local itemlist = {}
-            for slot, item in pairs(chest.list()) do
-                if isIn(itemlist,item.name) == false then
-                    table.insert(itemlist,item.name)
-                end
+-- The entire following code block is purely for the display
+function rmpfx(name)
+    return string.match(name,":(.*)")
+end
+function displayName(name)
+    local dingus = string.match(name,":(.*)")
+    local dingus2 = string.gsub(dingus,"_"," ")
+    return (dingus2:gsub("^%l", string.upper))
+end
+transferLog = {}
+transLogNumbers = {}
+monitor = peripheral.wrap("top")
+function transLog(name,number)
+    if isIn(transferLog,name) then
+        for i,v in pairs(transferLog) do
+            if v == name then
+                transferLog[#transferLog+1] = name
+                transLogNumbers[#transLogNumbers+1] = transLogNumbers[i]+number
+                table.remove(transferLog,i)
+                table.remove(transLogNumbers,i)
             end
-            local indexedChest = {}
-            indexedChest.name = v
-            indexedChest.items = itemlist
-            table.insert(chestlist,indexedChest)
+        end
+    else
+        transferLog[#transferLog+1] = name
+        transLogNumbers[#transLogNumbers+1] = number
+        if #transferLog > 10 then
+            table.remove(transferLog,1)
+            table.remove(transLogNumbers,1)
         end
     end
-    return chestlist
+    monitor.clear()
+    monitor.setCursorPos(1,1)
+    for i,v in pairs(transferLog) do
+        monitor.setCursorPos(1,i)
+        monitor.write(displayName(v).." x"..transLogNumbers[i])
+    end
 end
-scan() 
+
+
+-- this is the actual sorting. as you can see its very rudimentary
+function sort(input,output)
+    for i, inv in pairs(input) do
+        currentinv = peripheral.wrap(inv)
+        for slot, item in pairs(currentinv.list()) do
+            for ii, chest in pairs(output) do
+                if isIn(chest.items, item.name) then
+                    if currentinv.pushItems(chest.name,slot) == 0 then
+                        -- inv.pushItems(peripheral.getName(trash),slot)
+                        print("whoops, nowhere to push")
+                    else
+                        print("pooshed")
+                        transLog(item.name,item.count)
+                    end
+                end
+            end
+        end
+    end
+end
