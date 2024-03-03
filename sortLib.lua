@@ -8,13 +8,9 @@ local function isIn (tab, val)
         end
     end
     return false
-end 
-
+end
 
 -- The entire following code block is purely for the display
-local function rmpfx(name)
-    return string.match(name,":(.*)")
-end
 local function displayName(name)
     local dingus = string.match(name,":(.*)")
     local dingus2 = string.gsub(dingus,"_"," ")
@@ -49,19 +45,20 @@ local function transLog(name,number)
     end
 end
 
-
 -- this is the actual sorting. as you can see its very rudimentary
-function sortLib.sort(input,output)
+function sortLib.sort(input,output,overflow)
     for i, inv in pairs(input) do
+        print(inv)
         local currentinv = peripheral.wrap(inv)
+        print(tostring(currentinv))
         for slot, item in pairs(currentinv.list()) do
             for ii, chest in pairs(output) do
                 if isIn(chest.items, item.name) then
-                    if currentinv.pushItems(chest.name,slot) == 0 then
-                        -- inv.pushItems(peripheral.getName(trash),slot)
-                        print("whoops, nowhere to push")
+                    --THIS LINE IN PARTICULAR IS BROKEN IT KEEPS INSISTING THAT THE CHESTS DONT EXIST
+                   if currentinv.pushItems(chest.name,slot) == 0 then
+                        currentinv.pushItems(overflow,slot)
+                        print(item.name .. "sent to overflow")
                     else
-                        print("pooshed")
                         transLog(item.name,item.count)
                     end
                 end

@@ -2,7 +2,7 @@ local json = require "json"
 local scanLib= require "scanLib"
 
 -- begin starting to write code
-local inputChests = {"minecraft:barrel_0"}
+local inputChests = {"right"}
 
 local storageData=scanLib.scan(inputChests)
 local chestData=json.encode(storageData)
